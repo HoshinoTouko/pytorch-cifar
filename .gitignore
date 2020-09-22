@@ -1,6 +1,9 @@
 .idea/
 data/
 
+# PyTorch
+*.pth
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
