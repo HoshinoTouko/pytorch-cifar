@@ -89,6 +89,13 @@ if __name__ == '__main__':
     optimizer = optim.SGD(net.parameters(), lr=args.lr,
                           momentum=0.9, weight_decay=5e-4)
 
+    # Test tool
+    def print_params(model_to_print):
+        for name, param in model_to_print.named_parameters():
+            if param.requires_grad:
+                print(name, param.data)
+                break
+        input()
 
     # Training
     def train(epoch):
@@ -103,7 +110,9 @@ if __name__ == '__main__':
             outputs = net(inputs)
             loss = criterion(outputs, targets)
             loss.backward()
+            # print_params(net)
             optimizer.step()
+            # print_params(net)
 
             train_loss += loss.item()
             _, predicted = outputs.max(1)
